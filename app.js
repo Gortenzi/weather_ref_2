@@ -1,4 +1,4 @@
-import { URLS, NOW, btns, DETAILS, convertTime, FAVORITES, FORECAST, createDiv, convertForecastDay, convertForecastTime, setDefaultStart } from '/view.js';
+import { URLS, NOW, btns, DETAILS, convertTime, FAVORITES, FORECAST, createDiv, convertForecastDay, convertForecastTime, setDefaultStart } from './view.js';
   
 
 
