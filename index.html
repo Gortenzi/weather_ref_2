@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto&family=Work+Sans&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="container">
+        <div class="container-inner">
+          <form class="form-top" onsubmit="return false">
+            <input class="search-input" type="text" placeholder="Aktobe" />
+            <!-- <hr class="inp-top"> -->
+            <button class="search-btn">
+              <img class="btn-img" src="img/01.svg" alt="img" />
+            </button>
+          </form>
+
+          <div class="two-row">
+            <div class="left">
+              <div class="info-left info-left__tab1" id="tab-01">
+                <div class="temp">
+                  <span class="temp-number">14 &deg</span>
+                </div>
+                <div class="temp-img">
+                  <img class="weather-img" src="img/02.svg" alt="img" />
+                </div>
+                <div class="temp-info">
+                  <div class="temp-city favorite-city">
+                    <div class="temp-location">Aktobe</div>
+                    <div class="temp-favorite" id="white">
+                      <img
+                        class="favorite-heart white"
+                        src="img/03.svg"
+                        alt="img"
+                      />
+                    </div>
+                    <!-- <div class="temp-favorite" id="red" hidden>   
+                                            <img class="favorite-heart red" src="img/heart_red.svg" alt="img"></div> -->
+                  </div>
+                </div>
+              </div>
+              <div class="info-left" id="tab-02">
+                <div class="info-left__tab2">
+                  <div class="details-loc">Aktobe</div>
+                  <div class="details-temp">Temperature: 14</div>
+                  <div class="details-feels__like">Feels like: 10</div>
+                  <div class="details-weather">Weather: Clouds</div>
+                  <div class="details-sunrise">Sunrise: 03:21</div>
+                  <div class="details-sunset">Sunset: 18:54</div>
+                </div>
+              </div>
+
+              <div class="info-left" id="tab-03">
+                <div class="info-left forecast">
+                  <div class="info-left__forecast-text">Aktobe</div>
+                  <div class="forecast-body item">
+                    <div class="item-date date__0">17 May</div>
+                    <div class="item-time time__0">12:00</div>
+                    <div class="item-temp temp__0">Temperature:13 &deg</div>
+                    <div class="item-descr descr__0">Rain</div>
+                    <div class="item-feels feels__0">Feels like: 10 &deg</div>
+                    <div class="item-img">
+                      <img
+                        class="img__0"
+                        src="img/icons8-rain-96 1.png"
+                        alt=""
+                      />
+                    </div>
+                  </div>
+                  <div class="forecast-body item">
+                    <div class="item-data date__1">17 May</div>
+                    <div class="item-time time__1">12:00</div>
+                    <div class="item-temp temp__1">Temperature:13 &deg</div>
+                    <div class="item-decr descr__1">Rain</div>
+                    <div class="item-feels feels__1">Feels like: 10 &deg</div>
+                    <div class="item-img">
+                      <img
+                        class="img__1"
+                        src="img/icons8-rain-96 1.png"
+                        alt=""
+                      />
+                    </div>
+                  </div>
+                  <div class="forecast-body item">
+                    <div class="item-data date__2">17 May</div>
+                    <div class="item-time time__2">12:00</div>
+                    <div class="item-temp temp__2">Temperature:13 &deg</div>
+                    <div class="item-decr descr__2">Rain</div>
+                    <div class="item-feels feels__2">Feels like: 10 &deg</div>
+                    <div class="item-img">
+                      <img
+                        class="img__2"
+                        src="img/icons8-rain-96 1.png"
+                        alt=""
+                      />
+                    </div>
+                  </div>
+                  <div class="forecast-body item">
+                    <div class="item-data date__3">17 May</div>
+                    <div class="item-time time__3">12:00</div>
+                    <div class="item-temp temp__3">Temperature:13 &deg</div>
+                    <div class="item-decr descr__3">Rain</div>
+                    <div class="item-feels feels__3">Feels like: 10 &deg</div>
+                    <div class="item-img">
+                      <img
+                        class="img__3"
+                        src="img/icons8-rain-96 1.png"
+                        alt=""
+                      />
+                    </div>
+                  </div>
+                  <div class="forecast-body item">
+                    <div class="item-data date__4">17 May</div>
+                    <div class="item-time time__4">12:00</div>
+                    <div class="item-temp temp__4">Temperature:13 &deg</div>
+                    <div class="item-decr descr__4">Rain</div>
+                    <div class="item-feels feels__4">Feels like: 10 &deg</div>
+                    <div class="item-img">
+                      <img
+                        class="img__4"
+                        src="img/icons8-rain-96 1.png"
+                        alt=""
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="info-link">
+                <a href="#tab-01" class="info-link__a active">Now</a>
+                <a href="#tab-02" class="info-link__a">Details</a>
+                <a href="#tab-03" class="info-link__a">Forecast</a>
+              </div>
+            </div>
+            <div class="right">
+              <div class="right-form">
+                <form class="right-form__inp">
+                  <input
+                    class="inp-right"
+                    type="text"
+                    placeholder="Added Locations:"
+                  />
+                </form>
+              </div>
+              <div class="right-text">
+                <div class="city-favorite">
+                  <div class="city">Aktobe</div>
+                  <img class="clear-img" src="img/x.png" alt="remove" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script type="module" src="app.js"></script>
+    <!-- <script  src="appTest.js"></script> -->
+  </body>
+</html>
