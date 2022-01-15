@@ -1,6 +1,6 @@
 export const URLS = {
-    SERVER: 'http://api.openweathermap.org/data/2.5/weather',
-    SERVER_ICON : 'http://openweathermap.org/img/wn/',
+    SERVER: 'https://api.openweathermap.org/data/2.5/weather',
+    SERVER_ICON : 'https://openweathermap.org/img/wn/',
     SERVER_FORECAST: 'https://api.openweathermap.org/data/2.5/forecast',
     API_KEY: '4a68b87e270abf83558362ff6a1ee824',
     
