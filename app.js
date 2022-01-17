@@ -1,14 +1,14 @@
-import { URLS, NOW, btns, DETAILS, convertTime, FAVORITES, FORECAST, createDiv, convertForecastDay, convertForecastTime, setDefaultStart } from './view.js';
-  
-
+import { URLS, NOW, btns, DETAILS, FAVORITES, FORECAST } from "./view.js";
+import { createDiv, convertForecastDay, convertForecastTime, setDefaultStart, convertTime} from "./helper.js";
+import {renderWeather, renderForecast} from "./render.js"
 
 const INPUT_LOCATION = document.querySelector('.search-input');
 let cityName = INPUT_LOCATION.value;
 const URL = `${URLS.SERVER}?q=${INPUT_LOCATION.value}&appid=${URLS.API_KEY}&units=metric`;
  const SEARCH_LOCATION = document.querySelector('.search-btn');
 
-
- const FAVORITE_CITY_LIST = JSON.parse(localStorage.getItem('storage'));
+// const FAVORITE_CITY_LIST = [];
+const FAVORITE_CITY_LIST = JSON.parse(localStorage.getItem('storage'));
  if (FAVORITE_CITY_LIST == null) FAVORITE_CITY_LIST = [];
 
 window.addEventListener('load', () => {
@@ -24,36 +24,11 @@ window.addEventListener('load', () => {
 
 
 
-const renderWeather = response => {
-               const isNotValid = INPUT_LOCATION.value === ''
-	             isNotValid ? NOW.LOCATION.textContent = '' : NOW.LOCATION.textContent = response.name
-               NOW.LOCATION.textContent = response.name;
-               NOW.TEMPERATURE.textContent = `${Math.round(response.main.temp)}` + '\xb0';
-               NOW.WEATHER_ICON.src = `${URLS.SERVER_ICON}${response.weather[0].icon}@4x.png`;
-               DETAILS.LOCATION.textContent = response.name;
-               DETAILS.TEMP.textContent = `${Math.round(response.main.temp)}` + '\xb0';
-               DETAILS.FEELS_LIKE.textContent = `Feels like: ${Math.round(response.main.feels_like)}` + '\xb0';
-               DETAILS.WEATHER.textContent = `Weather: ${response.weather[0].description}`;
-               DETAILS.SUNRISE.textContent = `Sunrise: ${convertTime(response.sys.sunrise)}`;
-               DETAILS.SUNSET.textContent = `Sunset: ${convertTime(response.sys.sunset)}`;
-               
-     }
-          
-     const renderForecast = response => {
-      for (let i = 0; i <= 4; i++) {
-        FORECAST.LOCATION.textContent = response.city.name;
-        document.querySelector(`.date__${i}`).textContent = `${convertForecastDay(response.list[i].dt_txt)}`;
-        document.querySelector(`.temp__${i}`).textContent = `Temperature: ${Math.round(response.list[i].main.temp)}` + '\xb0';
-        document.querySelector(`.feels__${i}`).textContent = `Feels like: ${Math.round(response.list[i].main.feels_like)}` + '\xb0';
-        document.querySelector(`.time__${i}`).textContent = `${convertForecastTime(response.list[i].dt_txt)}`;
-        document.querySelector(`.descr__${i}`).textContent = response.list[i].weather[0].description;
-        document.querySelector(`.img__${i}`).src = `${URLS.SERVER_ICON}${response.list[i].weather[0].icon}.png`;
-      }
-    }
+
 
 // ===get respons  acync await
 
-// async function getJson (url) {
+// async function getJson (cityName, url) {
   
   // const url = `${URLS.SERVER}?q=${INPUT_LOCATION.value}&appid=${URLS.API_KEY}&units=metric`;
 //  let url = 'https://jsonplaceholder.typicode.com/todos/5';
@@ -74,8 +49,8 @@ const renderWeather = response => {
 // const urlWeather = `${URLS.SERVER}?q=${cityName}&appid=${URLS.API_KEY}&units=metric`;
 // const urlForecast = `${URLS.SERVER_FORECAST}?q=${cityName}&appid=${URLS.API_KEY}&units=metric`;
 
-// const getForecast = () => getJson(urlForecast).then(renderForecast)
-// const getWeather = () => getJson(urlWeather).then(renderWeather)
+// const getForecast = () => getJson(cityName, urlForecast).then(renderForecast)
+// const getWeather = () => getJson(cityName, urlWeather).then(renderWeather)
 
 // SEARCH_LOCATION.addEventListener('click', getWeather);
 
@@ -91,14 +66,14 @@ const renderWeather = response => {
       fetch(urlForecast)
         .then(response => response.json())
         .then(renderForecast)
-        .finally(INPUT_LOCATION.form.reset())
+        .finally(() => (INPUT_LOCATION.form.reset()))
       const currentCity = INPUT_LOCATION.value;
       localStorage.setItem('currentCity', currentCity)
     }
     
     SEARCH_LOCATION.addEventListener('click', getForecast)
 
-
+    // INPUT_LOCATION.form.reset()
 
 
   function addCity() {
@@ -122,6 +97,7 @@ const renderWeather = response => {
   }
   
   Array.from(FAVORITES.ADDED_LOCATIONS).find(item => item.addEventListener('click', chooseFromFavorites))
+  // new Set(...[(FAVORITES.ADDED_LOCATIONS).find(item => item.addEventListener('click', chooseFromFavorites))])
   
 
 
