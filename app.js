@@ -5,7 +5,7 @@ import {  createDiv, convertForecastDay, convertForecastTime, setDefaultStart, c
 const INPUT_LOCATION = document.querySelector('.search-input');
 const SEARCH_LOCATION = document.querySelector('.search-btn');
 
-const FAVORITE_CITY_LIST = JSON.parse(localStorage.getItem('storage'));
+let FAVORITE_CITY_LIST = JSON.parse(localStorage.getItem('storage'));
  if (FAVORITE_CITY_LIST == null) FAVORITE_CITY_LIST = [];
 
 window.addEventListener('load', () => {
