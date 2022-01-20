@@ -13,6 +13,10 @@ export const NOW = {
 
 }
 
+// destructuring obj NOW
+// const{LOCATION, TEMPERATURE, WEATHER_ICON, FAVORITE} = NOW
+
+
 export const DETAILS = {
     LOCATION: document.querySelector('.details-loc'),
     TEMP: document.querySelector('.details-temp'),
@@ -50,5 +54,3 @@ export const btns = document.querySelectorAll('.info-link__a')
     })
   }
 
-
-    
