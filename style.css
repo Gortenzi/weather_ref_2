@@ -198,6 +198,10 @@ body {
 }
 .right {
   overflow-y: scroll;
+  width: 300px;
+}
+.right-form {
+  height: 60px;
 }
 .inp-right {
   height: 60px;
@@ -208,7 +212,7 @@ body {
   flex-direction: column;
 
   background-color: aqua;
-  /* overflow-y: scroll; */
+  /* overflow: scroll; */
 }
 .city-favorite {
   display: flex;
@@ -216,7 +220,7 @@ body {
   justify-content: space-between;
   position: relative;
   /* flex: 0 1 auto; */
-  background-color: chartreuse;
+  background-color: #facff6;
 }
 .city {
   position: relative;

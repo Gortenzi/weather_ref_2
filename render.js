@@ -14,6 +14,7 @@ export const renderWeather = response => {
 }
 
 export const renderForecast = response => {
+  
 for (let i = 0; i <= 4; i++) {
 FORECAST.LOCATION.textContent = response.city.name;
 document.querySelector(`.date__${i}`).textContent = `${convertForecastDay(response.list[i].dt_txt)}`;

@@ -7,7 +7,6 @@ let cityName = INPUT_LOCATION.value;
 const URL = `${URLS.SERVER}?q=${INPUT_LOCATION.value}&appid=${URLS.API_KEY}&units=metric`;
  const SEARCH_LOCATION = document.querySelector('.search-btn');
 
-// const FAVORITE_CITY_LIST = [];
 const FAVORITE_CITY_LIST = JSON.parse(localStorage.getItem('storage'));
  if (FAVORITE_CITY_LIST == null) FAVORITE_CITY_LIST = [];
 
@@ -55,54 +54,33 @@ document.querySelector(`.img__${i}`).src = `${URLS.SERVER_ICON}${response.list[i
 
 
 
-// ===get respons  acync await
+// ===get response  acync await
 
-// async function getJson (cityName, url) {
-  
-  // const url = `${URLS.SERVER}?q=${INPUT_LOCATION.value}&appid=${URLS.API_KEY}&units=metric`;
-//  let url = 'https://jsonplaceholder.typicode.com/todos/5';
-//  try {
-//    const response = await fetch(url)
-//    const responseData = await response.json()
-//    console.log(responseData)
-//  }catch(e) {
-//    console.error(e)
-//  } finally {
-//    INPUT_LOCATION.form.reset()
-//   }
+async function getForecast () {
+  let cityName = INPUT_LOCATION.value;
+  const urlWeather = `${URLS.SERVER}?q=${cityName}&appid=${URLS.API_KEY}&units=metric`;
+  const urlForecast = `${URLS.SERVER_FORECAST}?q=${cityName}&appid=${URLS.API_KEY}&units=metric`;
+ try {
+   const responseWeather = await fetch(urlWeather)
+   const responseW = await responseWeather.json()
+    renderWeather(responseW)
+   const responseForecast = await fetch(urlForecast)
+   const responseF = await responseForecast.json()
+    renderForecast(responseF)
+
+ }catch(e) {
+   console.error(e)
+ } finally {
+   INPUT_LOCATION.form.reset()
+  }
    
-//    const currentCity = INPUT_LOCATION.value;
-//    localStorage.setItem('currentCity', currentCity)
+   const currentCity = cityName
+   localStorage.setItem('currentCity', currentCity)
 
-// }
-// const urlWeather = `${URLS.SERVER}?q=${cityName}&appid=${URLS.API_KEY}&units=metric`;
-// const urlForecast = `${URLS.SERVER_FORECAST}?q=${cityName}&appid=${URLS.API_KEY}&units=metric`;
+}
 
-// const getForecast = () => getJson(cityName, urlForecast).then(renderForecast)
-// const getWeather = () => getJson(cityName, urlWeather).then(renderWeather)
+SEARCH_LOCATION.addEventListener('click', getForecast)
 
-// SEARCH_LOCATION.addEventListener('click', getWeather);
-
-//====
-    function getForecast() {
-      const cityName = INPUT_LOCATION.value;
-      const urlWeather = `${URLS.SERVER}?q=${cityName}&appid=${URLS.API_KEY}&units=metric`;
-      const urlForecast = `${URLS.SERVER_FORECAST}?q=${cityName}&appid=${URLS.API_KEY}&units=metric`;
-      fetch(urlWeather)
-        .then(response => response.json())
-        .then(renderWeather)
-        .catch(error => alert(error.message + '\nBad data'))
-      fetch(urlForecast)
-        .then(response => response.json())
-        .then(renderForecast)
-        .finally(() => (INPUT_LOCATION.form.reset()))
-      const currentCity = INPUT_LOCATION.value;
-      localStorage.setItem('currentCity', currentCity)
-    }
-    
-    SEARCH_LOCATION.addEventListener('click', getForecast)
-
-    // INPUT_LOCATION.form.reset()
 
 
   function addCity() {
@@ -139,16 +117,3 @@ function deleteCity() {
 
 FAVORITES.REMOVE.forEach(item => item.addEventListener('click', deleteCity));  
 
-// const obj1 = {
-//   test:1,
-// }
-// const obj2 = {
-//   test:2,
-// }
-
-// function f() {
-  // console.log(this.test)
-
-// }
-
-// f.bind(obj1).call(obj2);
