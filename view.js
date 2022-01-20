@@ -38,6 +38,7 @@ export const FAVORITES = {
 	REMOVE: document.querySelectorAll('.clear-img'),
 }
 
+
 export const btns = document.querySelectorAll('.info-link__a')
 
   btns.forEach(btn => {
