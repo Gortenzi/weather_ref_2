@@ -16,6 +16,7 @@ body {
   min-height: 462px;
   margin: 0 auto;
   background: #ffffff;
+  /* background-color: inear-gradient(to top right, #33ccff 0%, #ff3399 100%); */
 }
 .container {
   background: #ffffff;
@@ -27,7 +28,7 @@ body {
   flex-direction: column;
   flex: 0 1 auto;
   border: 1px solid #292727;
-  min-height: 432px;
+  max-height: 432px;
   width: 600px;
   margin: 0 auto;
   position: absolute;
@@ -60,7 +61,7 @@ body {
 .two-row {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  height: 392px;
+  min-height: 100%;
 }
 .left {
   display: flex;
@@ -79,6 +80,7 @@ body {
 }
 
 .info-left:target {
+  content: "";
   display: block;
 }
 .info-left span {
@@ -125,8 +127,10 @@ body {
   background-repeat: no-repeat;
 }
 .white:hover {
-  background-image: url(img/heart_red.svg);
+  content: "";
+  background-image: url(img/06.svg);
   background-repeat: no-repeat;
+  box-shadow: 40px -41px 8px -35px rgba(126, 145, 217, 0.6);
 }
 .info-link {
   display: flex;
@@ -177,7 +181,7 @@ body {
 }
 .forecast-body {
   height: 120px;
-  width: 265px;
+  max-width: 259px;
   border: 1px solid #292727;
   padding: 5px;
   display: grid;
@@ -197,8 +201,10 @@ body {
 .item {
 }
 .right {
-  overflow-y: scroll;
-  width: 300px;
+  display: flex;
+  flex-direction: column;
+  flex: 0 0 auto;
+  max-height: 387px;
 }
 .right-form {
   height: 60px;
@@ -210,17 +216,18 @@ body {
 .right-text {
   display: flex;
   flex-direction: column;
-
-  background-color: aqua;
-  /* overflow: scroll; */
+  min-height: 200px;
+  flex: 1 1 auto;
+  /* background-color: aqua; */
+  overflow-y: scroll;
 }
 .city-favorite {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   position: relative;
-  /* flex: 0 1 auto; */
-  background-color: #facff6;
+  /* background-color: inear-gradient(to top right, #33ccff 0%, #ff3399 100%); */
+  background-color: #ffccff;
 }
 .city {
   position: relative;

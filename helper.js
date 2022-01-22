@@ -8,20 +8,32 @@
 
 // constructor ?
 
+// function CreateDiv() {
+   
+//     this.createdEl = function(nameOfClass) { 
+//       this.nameOfClass = nameOfClass
+//       this.nameOfClass.insertAdjacentHTML("beforeend",
+//     `<div class="city-favorite">
+//     <div class="city">${document.querySelector('.temp-location').textContent}</div>
+//     <img class="clear-img" src="img/x.png" alt="remove">
+//   </div>`)
+//    }
+//    }
+
 function CreateDiv() {
    
-    this.createdEl = function(nameOfClass) { 
-      this.nameOfClass = nameOfClass
-      this.nameOfClass.insertAdjacentHTML("beforeend",
-    `<div class="city-favorite">
-    <div class="city">${document.querySelector('.temp-location').textContent}</div>
-    <img class="clear-img" src="img/x.png" alt="remove">
-  </div>`)
-   }
-   }
+  this.createdEl = function(nameOfClass, element) { 
+    this.nameOfClass = nameOfClass
+    this.nameOfClass.insertAdjacentHTML("beforeend",
+  `<div class="city-favorite">
+  <div class="city">${element}</div>
+  <img class="clear-img" src="img/x.png" alt="remove">
+</div>`)
+ }
+ }
   export   const createDiv = new CreateDiv()
 
-  
+  document.querySelector('.temp-location').textContent
 
    export   function setDefaultStart () {
     

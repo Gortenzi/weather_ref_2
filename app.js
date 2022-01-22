@@ -9,13 +9,11 @@ let FAVORITE_CITY_LIST = []
 FAVORITE_CITY_LIST = JSON.parse(localStorage.getItem('storage'));
  if (FAVORITE_CITY_LIST == null) FAVORITE_CITY_LIST = [];
 
+
 window.addEventListener('load', () => {
+	
 	FAVORITE_CITY_LIST.map(item => {
-    FAVORITES.RIGHT_TEXT.insertAdjacentHTML("beforeend",
-        `<div class="city-favorite">
-        <div class="city">${item}</div>
-        <img class="clear-img" src="img/x.png" alt="remove">
-      </div>`)
+    createDiv.createdEl(FAVORITES.RIGHT_TEXT, item)
 		document.querySelectorAll('.clear-img').forEach(item => item.addEventListener('click', deleteCity));
 		document.querySelectorAll('.city').forEach(item => item.addEventListener('click', chooseFromFavorites));
 	})
@@ -25,23 +23,25 @@ window.addEventListener('load', () => {
 })
 
  const renderWeather = response => {
+  
   const isNotValid = INPUT_LOCATION.value === ''
     isNotValid ? NOW.LOCATION.textContent = '' : NOW.LOCATION.textContent = response.name
-  NOW.LOCATION.textContent = response.name;
-  NOW.TEMPERATURE.textContent = `${Math.round(response.main.temp)}` + '\xb0';
-  NOW.WEATHER_ICON.src = `${URLS.SERVER_ICON}${response.weather[0].icon}@4x.png`;
-  DETAILS.LOCATION.textContent = response.name;
-  DETAILS.TEMP.textContent = `${Math.round(response.main.temp)}` + '\xb0';
-  DETAILS.FEELS_LIKE.textContent = `Feels like: ${Math.round(response.main.feels_like)}` + '\xb0';
-  DETAILS.WEATHER.textContent = `Weather: ${response.weather[0].description}`;
-  DETAILS.SUNRISE.textContent = `Sunrise: ${convertTime(response.sys.sunrise)}`;
-  DETAILS.SUNSET.textContent = `Sunset: ${convertTime(response.sys.sunset)}`;
+  
+    NOW.LOCATION.textContent = response.name;
+    NOW.TEMPERATURE.textContent = `${Math.round(response.main.temp)}` + '\xb0';
+    NOW.WEATHER_ICON.src = `${URLS.SERVER_ICON}${response.weather[0].icon}@4x.png`;
+    DETAILS.LOCATION.textContent = response.name;
+    DETAILS.TEMP.textContent = `${Math.round(response.main.temp)}` + '\xb0';
+    DETAILS.FEELS_LIKE.textContent = `Feels like: ${Math.round(response.main.feels_like)}` + '\xb0';
+    DETAILS.WEATHER.textContent = `Weather: ${response.weather[0].description}`;
+    DETAILS.SUNRISE.textContent = `Sunrise: ${convertTime(response.sys.sunrise)}`;
+    DETAILS.SUNSET.textContent = `Sunset: ${convertTime(response.sys.sunset)}`;
   
 }
 
 const renderForecast = response => {
 for (let i = 0; i <= 4; i++) {
-  document.querySelector('.info-left__forecast-text').textContent = response.city.name;
+document.querySelector('.info-left__forecast-text').textContent = response.city.name;
 document.querySelector(`.date__${i}`).textContent = `${convertForecastDay(response.list[i].dt_txt)}`;
 document.querySelector(`.temp__${i}`).textContent = `Temperature: ${Math.round(response.list[i].main.temp)}` + '\xb0';
 document.querySelector(`.feels__${i}`).textContent = `Feels like: ${Math.round(response.list[i].main.feels_like)}` + '\xb0';
@@ -76,25 +76,37 @@ async function getForecast () {
 
 SEARCH_LOCATION.addEventListener('click', getForecast)
 
+function addHeartClassRed () {
+  // let heart = document.querySelector('.temp-favorite')
+  // let imgHeart = document.querySelector('.favorite-heart')
+  // imgHeart.addEventListener('click', function() {
+  //   imgHeart.classList.add('red')
+  // });
+  let imgHeart = document.querySelector('.favorite-heart')
+  imgHeart.classList.add('red')
+}
 
 
   function addCity() {
     const isNotValid = NOW.LOCATION.textContent === 'location' || Array.from(FAVORITES.ADDED_LOCATIONS).find(item => item.textContent === NOW.LOCATION.textContent);
     if (isNotValid) return
-     
       FAVORITE_CITY_LIST.push(NOW.LOCATION.textContent)
       localStorage.setItem('storage', JSON.stringify(FAVORITE_CITY_LIST));
-      createDiv.createdEl(FAVORITES.RIGHT_TEXT)
+      createDiv.createdEl(FAVORITES.RIGHT_TEXT, NOW.LOCATION.textContent)
       document.querySelectorAll('.clear-img').forEach(item => item.addEventListener('click', deleteCity));
       document.querySelectorAll('.city').forEach(item => item.addEventListener('click', chooseFromFavorites));
-     setDefaultStart ()
-  }
-
-  NOW.FAVORITE.addEventListener('click', addCity);
-
-  function chooseFromFavorites() {
-    INPUT_LOCATION.value = this.textContent;
-    getForecast()
+      setDefaultStart ()
+    }
+    
+    NOW.FAVORITE.addEventListener('click', addCity);
+    
+    function chooseFromFavorites() {
+      // let imgHeart = document.querySelector('.favorite-heart')
+      // this.textContent.addEventListener('click',addHeartClassRed)
+        INPUT_LOCATION.value = this.textContent;
+       
+        getForecast()
+    
   }
 
   Array.from(FAVORITES.ADDED_LOCATIONS).find(item => item.addEventListener('click', chooseFromFavorites))
