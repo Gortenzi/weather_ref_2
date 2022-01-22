@@ -8,16 +8,15 @@ const SEARCH_LOCATION = document.querySelector('.search-btn');
 let FAVORITE_CITY_LIST = []
 FAVORITE_CITY_LIST = JSON.parse(localStorage.getItem('storage'));
  if (FAVORITE_CITY_LIST == null) FAVORITE_CITY_LIST = [];
-
-
-window.addEventListener('load', () => {
-	
-	FAVORITE_CITY_LIST.map(item => {
-    createDiv.createdEl(FAVORITES.RIGHT_TEXT, item)
-		document.querySelectorAll('.clear-img').forEach(item => item.addEventListener('click', deleteCity));
-		document.querySelectorAll('.city').forEach(item => item.addEventListener('click', chooseFromFavorites));
-	})
-	INPUT_LOCATION.value = localStorage.getItem('currentCity');
+ 
+ 
+ window.addEventListener('load', () => {
+   FAVORITE_CITY_LIST.map(item => {
+     createDiv.createdEl(FAVORITES.RIGHT_TEXT, item)
+     document.querySelectorAll('.clear-img').forEach(item => item.addEventListener('click', deleteCity));
+     document.querySelectorAll('.city').forEach(item => item.addEventListener('click', chooseFromFavorites));
+    })
+    INPUT_LOCATION.value = localStorage.getItem('currentCity');
 	getForecast()
   
 })

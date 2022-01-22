@@ -226,8 +226,12 @@ body {
   flex-direction: column;
   justify-content: space-between;
   position: relative;
-  /* background-color: inear-gradient(to top right, #33ccff 0%, #ff3399 100%); */
-  background-color: #ffccff;
+  /* background-color: #ffccff; */
+  background-image: linear-gradient(
+    to top right,
+    rgb(168, 243, 233) 30%,
+    rgb(236, 91, 200) 100%
+  );
 }
 .city {
   position: relative;

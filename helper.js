@@ -1,24 +1,5 @@
-// export function createDiv() {
-//     FAVORITES.RIGHT_TEXT.insertAdjacentHTML("beforeend",
-//     `<div class="city-favorite">
-//     <div class="city">${NOW.LOCATION.textContent}</div>
-//     <img class="clear-img" src="img/x.png" alt="remove">
-//   </div>`)
-//    }
 
 // constructor ?
-
-// function CreateDiv() {
-   
-//     this.createdEl = function(nameOfClass) { 
-//       this.nameOfClass = nameOfClass
-//       this.nameOfClass.insertAdjacentHTML("beforeend",
-//     `<div class="city-favorite">
-//     <div class="city">${document.querySelector('.temp-location').textContent}</div>
-//     <img class="clear-img" src="img/x.png" alt="remove">
-//   </div>`)
-//    }
-//    }
 
 function CreateDiv() {
    
@@ -33,7 +14,7 @@ function CreateDiv() {
  }
   export   const createDiv = new CreateDiv()
 
-  document.querySelector('.temp-location').textContent
+  
 
    export   function setDefaultStart () {
     
