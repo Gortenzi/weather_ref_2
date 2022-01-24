@@ -1,4 +1,8 @@
+import { URLS, NOW, btns, DETAILS, FAVORITES, FORECAST } from "./view.js";
+import {  createDiv, convertForecastDay, convertForecastTime, setDefaultStart, convertTime} from "./helper.js";
+
 export const renderWeather = response => {
+   const INPUT_LOCATION = document.querySelector('.search-input');
     const isNotValid = INPUT_LOCATION.value === ''
       isNotValid ? NOW.LOCATION.textContent = '' : NOW.LOCATION.textContent = response.name
     NOW.LOCATION.textContent = response.name;

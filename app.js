@@ -21,42 +21,14 @@ FAVORITE_CITY_LIST = JSON.parse(localStorage.getItem('storage'));
   
 })
 
- const renderWeather = response => {
-  
-  const isNotValid = INPUT_LOCATION.value === ''
-    isNotValid ? NOW.LOCATION.textContent = '' : NOW.LOCATION.textContent = response.name
-  
-    NOW.LOCATION.textContent = response.name;
-    NOW.TEMPERATURE.textContent = `${Math.round(response.main.temp)}` + '\xb0';
-    NOW.WEATHER_ICON.src = `${URLS.SERVER_ICON}${response.weather[0].icon}@4x.png`;
-    DETAILS.LOCATION.textContent = response.name;
-    DETAILS.TEMP.textContent = `${Math.round(response.main.temp)}` + '\xb0';
-    DETAILS.FEELS_LIKE.textContent = `Feels like: ${Math.round(response.main.feels_like)}` + '\xb0';
-    DETAILS.WEATHER.textContent = `Weather: ${response.weather[0].description}`;
-    DETAILS.SUNRISE.textContent = `Sunrise: ${convertTime(response.sys.sunrise)}`;
-    DETAILS.SUNSET.textContent = `Sunset: ${convertTime(response.sys.sunset)}`;
-  
-}
-
-const renderForecast = response => {
-for (let i = 0; i <= 4; i++) {
-document.querySelector('.info-left__forecast-text').textContent = response.city.name;
-document.querySelector(`.date__${i}`).textContent = `${convertForecastDay(response.list[i].dt_txt)}`;
-document.querySelector(`.temp__${i}`).textContent = `Temperature: ${Math.round(response.list[i].main.temp)}` + '\xb0';
-document.querySelector(`.feels__${i}`).textContent = `Feels like: ${Math.round(response.list[i].main.feels_like)}` + '\xb0';
-document.querySelector(`.time__${i}`).textContent = `${convertForecastTime(response.list[i].dt_txt)}`;
-document.querySelector(`.descr__${i}`).textContent = response.list[i].weather[0].description;
-document.querySelector(`.img__${i}`).src = `${URLS.SERVER_ICON}${response.list[i].weather[0].icon}.png`;
-}
-}
-
 // ===get response  acync await
 
 async function getForecast () {
-   let cityName = INPUT_LOCATION.value;
-   const urlWeather = `${URLS.SERVER}?q=${cityName}&appid=${URLS.API_KEY}&units=metric`;
-   const urlForecast = `${URLS.SERVER_FORECAST}?q=${cityName}&appid=${URLS.API_KEY}&units=metric`;
- try {
+  let {renderWeather, renderForecast} = await import('./render.js')
+  let cityName = INPUT_LOCATION.value;
+  const urlWeather = `${URLS.SERVER}?q=${cityName}&appid=${URLS.API_KEY}&units=metric`;
+  const urlForecast = `${URLS.SERVER_FORECAST}?q=${cityName}&appid=${URLS.API_KEY}&units=metric`;
+  try {
     const responseWeather = await fetch(urlWeather)
     const responseW = await responseWeather.json()
     renderWeather(responseW)
