@@ -1,2 +1,5 @@
 /appTest.js
 /app22.js
+dist
+/.cache
+node_modules

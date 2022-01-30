@@ -1,0 +1,22 @@
+{
+    "env": {
+        "browser": true,
+        "es6": true,
+        "node": true
+
+    },
+    "extends": ["airbnb"],
+    "rules": {
+        "semi": "off",
+        "max-len": ["error", 150, {"ignoreUrls": true}],
+        "no-alert": "off",
+        "indent": [2, "tab"],
+        "linebreak-style": ["error", "windows"],
+        "no-use-before-define":"off",
+        "arrow-parens": ["error", "as-needed"],
+        
+        "padded-blocks":["error", "never"],
+        "no-multiple-empty-lines":[{ "max": 2 }]
+
+    }
+}

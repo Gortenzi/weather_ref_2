@@ -1,0 +1,35 @@
+{
+  "name": "c",
+  "version": "1.0.0",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "parcel app.js",
+    "build": "parcel build app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Gortenzi/weather_ref_2.git"
+  },
+  "author": "Tania Gor",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Gortenzi/weather_ref_2/issues"
+  },
+  "homepage": "https://github.com/Gortenzi/weather_ref_2#readme",
+  "dependencies": {
+    "date-fns": "^2.28.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.7.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-html": "^6.2.0",
+    "eslint-plugin-import": "^2.25.4",
+    "eslint-plugin-jsx-a11y": "^6.5.1",
+    "eslint-plugin-prettier": "^4.0.0",
+    "parcel-bundler": "^1.12.5",
+    "prettier": "^2.5.1"
+  },
+  "description": ""
+}
